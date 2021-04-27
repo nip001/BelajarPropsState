@@ -8,6 +8,7 @@ class Login extends Component {
         this.state = {
             username:"",
             password:"",
+            umur:20
         }
     }
 
@@ -15,6 +16,14 @@ class Login extends Component {
         alert(`username:${username}, password:${password}`)
     }
     
+    loginCheck(xpassword){
+        if(xpassword == "juaracoding"){
+            this.props.navigation.navigate('TextAsik',this.state);
+        }else{
+            alert("password salah")
+        }
+    }
+
     render() {
         return (
             <View>
@@ -23,7 +32,7 @@ class Login extends Component {
                 <Text style={styles.textStyle}> Password </Text>
                 <TextInput styles={styles.inputStyle} placeholder="Password" onChangeText={(data)=>{this.setState({password:data})}}/>
                 {/* <Button title="Login" color="#f194ff" onPress={this.onText.bind(this,this.state.username,this.state.password)}/> */}
-                <Button title="Login" color="#f194ff" onPress={()=>this.props.navigation.navigate('TextAsik')}/>
+                <Button title="Login" color="#f194ff" onPress={this.loginCheck.bind(this,this.state.password)}/>
             </View>
         )
     }

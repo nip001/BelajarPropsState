@@ -2,16 +2,17 @@ import React, { Component } from 'react';
 import { View,StyleSheet, Text } from 'react-native';
 
 class TextAsik extends Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//     };
-//   }
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: this.props.route.params.username
+    };
+  }
 
   render() {
     return (
       <View>
-        <Text style={styles.styleText}>Count : {this.props.textCounter}</Text>
+        <Text style={styles.styleText}>Selamat data {this.state.name}</Text>
       </View>
     );
   }
