@@ -8,7 +8,7 @@ const initialStateLogin = {
 }
 
 const LoginReducer = (state = initialStateLogin, action)=>{
-    console.log(state)
+    console.log("reducer"+JSON.stringify(state))
     if(action.type === "LOGIN_VALUE"){
         return{
             ...state,

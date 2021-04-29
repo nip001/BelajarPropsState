@@ -7,27 +7,21 @@ import { LoginAction } from '../Redux/Action'
 class Login extends Component {
     constructor(props) {
         super(props)
-        this.state = {
-            // username:"mantap",
-            password:"",
-        }
     }
 
     onText(username,password){
         alert(`username:${username}, password:${password}`)
     }
     
-    loginCheck(xpassword){
-        console.log(this.props.user)
+    loginCheck(){
+        console.log(this.props.user.username)
+        this.props.navigation.navigate('Home');
+        
         // if(xpassword == "juaracoding"){
         //     this.props.navigation.navigate('TextAsik',this.state);
         // }else{
         //     alert("password salah")
         // }
-    }
-
-    componentDidMount(){
-        console.log(this.props)
     }
 
     render() {
@@ -36,16 +30,16 @@ class Login extends Component {
                 <Text style={styles.textStyle}> Username </Text> 
                 <TextInput styles={styles.inputStyle} placeholder="Username" onChangeText={(data)=>{this.props.LoginAction(data,"username")}}/>
                 <Text style={styles.textStyle}> Password </Text>
-                <TextInput styles={styles.inputStyle} placeholder="Password" onChangeText={(data)=>{this.setState({password:data})}}/>
+                <TextInput styles={styles.inputStyle} placeholder="Password" onChangeText={(data)=>{this.props.LoginAction(data,"password")}}/>
                 {/* <Button title="Login" color="#f194ff" onPress={this.onText.bind(this,this.state.username,this.state.password)}/> */}
-                <Button title="Login" color="#f194ff" onPress={this.loginCheck.bind(this,this.state.password)}/>
+                <Button title="Login" color="#f194ff" onPress={this.loginCheck.bind(this)}/>
             </View>
         )
     }
 }
 
 const mapStateToProps = (state) => ({
-    user:state.LoginReducer.username
+    user:state.LoginReducer
 })
 
 const mapDispatchToProps = {
