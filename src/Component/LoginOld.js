@@ -1,15 +1,14 @@
 import React, { Component } from 'react'
 import { Text, StyleSheet, View, TextInput, Button } from 'react-native'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { LoginAction } from '../Redux/Action'
 
 class Login extends Component {
+    
     constructor(props) {
         super(props)
         this.state = {
-            // username:"mantap",
+            username:"",
             password:"",
+            umur:20
         }
     }
 
@@ -18,23 +17,18 @@ class Login extends Component {
     }
     
     loginCheck(xpassword){
-        console.log(this.props.username)
-        // if(xpassword == "juaracoding"){
-        //     this.props.navigation.navigate('TextAsik',this.state);
-        // }else{
-        //     alert("password salah")
-        // }
-    }
-
-    componentDidMount(){
-        console.log(this.props)
+        if(xpassword == "juaracoding"){
+            this.props.navigation.navigate('TextAsik',this.state);
+        }else{
+            alert("password salah")
+        }
     }
 
     render() {
         return (
             <View>
                 <Text style={styles.textStyle}> Username </Text> 
-                <TextInput styles={styles.inputStyle} value={this.props.username} placeholder="Username" onChangeText={(data)=>{this.props.LoginAction(data,"username")}}/>
+                <TextInput styles={styles.inputStyle} placeholder="Username" onChangeText={(data)=>{this.setState({username:data})}}/>
                 <Text style={styles.textStyle}> Password </Text>
                 <TextInput styles={styles.inputStyle} placeholder="Password" onChangeText={(data)=>{this.setState({password:data})}}/>
                 {/* <Button title="Login" color="#f194ff" onPress={this.onText.bind(this,this.state.username,this.state.password)}/> */}
@@ -44,13 +38,6 @@ class Login extends Component {
     }
 }
 
-const mapStateToProps = (state) => ({
-    username:state.username
-})
-
-const mapDispatchToProps = {
-    LoginAction
-}
 
 const styles = StyleSheet.create({
     textStyle:{
@@ -63,5 +50,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login)
-
+export default Login;
