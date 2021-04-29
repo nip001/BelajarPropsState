@@ -18,7 +18,7 @@ class Home extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    userData:state.LoginReducer
+    userData:state.RegisterReducer
 })
 
 const mapDispatchToProps = {

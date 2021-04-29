@@ -14,14 +14,15 @@ class Login extends Component {
     }
     
     loginCheck(){
-        console.log(this.props.user.username)
-        this.props.navigation.navigate('Home');
-        
-        // if(xpassword == "juaracoding"){
-        //     this.props.navigation.navigate('TextAsik',this.state);
-        // }else{
-        //     alert("password salah")
-        // }
+        if(this.props.userLogin.username == this.props.userRegister.username){
+            if(this.props.userLogin.password == this.props.userRegister.password){
+                this.props.navigation.navigate('Home');                
+            }else{
+                alert("password salah")
+            }
+        }else{
+            alert("username salah")
+        }
     }
 
     render() {
@@ -33,13 +34,15 @@ class Login extends Component {
                 <TextInput styles={styles.inputStyle} placeholder="Password" onChangeText={(data)=>{this.props.LoginAction(data,"password")}}/>
                 {/* <Button title="Login" color="#f194ff" onPress={this.onText.bind(this,this.state.username,this.state.password)}/> */}
                 <Button title="Login" color="#f194ff" onPress={this.loginCheck.bind(this)}/>
+                <Button title="Register" color="#f194ff" onPress={()=>{this.props.navigation.navigate("Register")}}/>
             </View>
         )
     }
 }
 
 const mapStateToProps = (state) => ({
-    user:state.LoginReducer
+    userLogin:state.LoginReducer,
+    userRegister:state.RegisterReducer
 })
 
 const mapDispatchToProps = {
