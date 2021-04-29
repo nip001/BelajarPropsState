@@ -18,7 +18,7 @@ class Login extends Component {
     }
     
     loginCheck(xpassword){
-        console.log(this.props.username)
+        console.log(this.props.user)
         // if(xpassword == "juaracoding"){
         //     this.props.navigation.navigate('TextAsik',this.state);
         // }else{
@@ -34,7 +34,7 @@ class Login extends Component {
         return (
             <View>
                 <Text style={styles.textStyle}> Username </Text> 
-                <TextInput styles={styles.inputStyle} value={this.props.username} placeholder="Username" onChangeText={(data)=>{this.props.LoginAction(data,"username")}}/>
+                <TextInput styles={styles.inputStyle} placeholder="Username" onChangeText={(data)=>{this.props.LoginAction(data,"username")}}/>
                 <Text style={styles.textStyle}> Password </Text>
                 <TextInput styles={styles.inputStyle} placeholder="Password" onChangeText={(data)=>{this.setState({password:data})}}/>
                 {/* <Button title="Login" color="#f194ff" onPress={this.onText.bind(this,this.state.username,this.state.password)}/> */}
@@ -45,7 +45,7 @@ class Login extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    username:state.username
+    user:state.LoginReducer.username
 })
 
 const mapDispatchToProps = {

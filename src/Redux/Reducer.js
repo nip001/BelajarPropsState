@@ -8,7 +8,7 @@ const initialStateLogin = {
 }
 
 const LoginReducer = (state = initialStateLogin, action)=>{
-    console.log(action)
+    console.log(state)
     if(action.type === "LOGIN_VALUE"){
         return{
             ...state,
